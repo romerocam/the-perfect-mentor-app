@@ -96,7 +96,7 @@ import {
   
     const memoedValue = useMemo(
       () => ({ user, signUp, signIn, error, loading, logout }),
-      [user, loading, error]
+      [user, loading, error,]
     )
   
     return (

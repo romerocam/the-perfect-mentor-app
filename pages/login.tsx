@@ -3,7 +3,7 @@ import Image from "next/image";
 import React from "react";
 import { useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
-// import useAuth from '../hooks/useAuth'
+import useAuth from "../hooks/useAuth";
 import doodle from "../public/assets/doodle.png";
 import Vector from "../public/assets/Vector.png";
 
@@ -14,7 +14,7 @@ interface Inputs {
 
 const Login = () => {
   const [login, setLogin] = useState(false);
-  // const { signIn, signUp } = useAuth()
+  const { signIn, signUp } = useAuth();
 
   const {
     register,
@@ -24,11 +24,11 @@ const Login = () => {
 
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
     console.log(data);
-    //   if (login) {
-    //     await signIn(data.email, data.password)
-    //   } else {
-    //     await signUp(data.email, data.password)
-    //   }
+    if (login) {
+      await signIn(data.email, data.password);
+    } else {
+      await signUp(data.email, data.password);
+    }
   };
   return (
     <div className="relative flex h-screen w-screen flex-col bg-[#BFD732] md:items-center md:justify-center md:bg-transparent">
@@ -41,15 +41,15 @@ const Login = () => {
         <Image
           src={Vector}
           alt=""
-        //   className="-z-10 !hidden opacity-60 sm:!inline"
-        //   objectFit="cover"
+          //   className="-z-10 !hidden opacity-60 sm:!inline"
+          //   objectFit="cover"
         />
         <Image
           src={doodle}
           alt=""
           // layout="fill"
-        //   className="-z-10 !hidden opacity-60 sm:!inline"
-        //   objectFit="cover"
+          //   className="-z-10 !hidden opacity-60 sm:!inline"
+          //   objectFit="cover"
         />
       </div>
       <div>
@@ -63,21 +63,19 @@ const Login = () => {
               <input
                 type="email"
                 placeholder="Email"
-                // className="input"
                 className={`input ${
                   errors.email && "border-b-2 border-orange-500"
                 }`}
                 {...register("email", { required: true })}
               />
               {errors.email && (
-              <p className="p-1 text-[13px] font-light  text-[#BFD732]">
-                Please enter a valid email.
-              </p>
-            )}
+                <p className="p-1 text-[13px] font-light  text-[#BFD732]">
+                  Please enter a valid email.
+                </p>
+              )}
             </label>
             <label className="inline-block w-full">
               <input
-                // className="input"
                 type="password"
                 placeholder="Password"
                 className={`input ${
@@ -86,10 +84,10 @@ const Login = () => {
                 {...register("password", { required: true })}
               />
               {errors.password && (
-              <p className="p-1 text-[13px] font-light  text-[#BFD732]">
-                Your password must contain between 5 and 10 characters.
-              </p>
-            )}
+                <p className="p-1 text-[13px] font-light  text-[#BFD732]">
+                  Your password must contain between 5 and 10 characters.
+                </p>
+              )}
             </label>
           </div>
           <button

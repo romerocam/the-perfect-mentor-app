@@ -1,8 +1,13 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import Header from "../components/Header";
+// import useAuth from "../hooks/useAuth";
 
 const Home: NextPage = () => {
+  // const { user, loading } = useAuth();
+
+  // if (loading) return( "Loading ...");
+
   return (
     <div className="relative h-screen">
       <Head>
