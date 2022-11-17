@@ -15,4 +15,7 @@
     .headerLink{
         @apply cursor-pointer text-sm font-bold text-[#444444] transition duration-[.4s] hover:text-[#b3b3b3]
     }
+    .input {
+        @apply w-full rounded bg-[#333333] px-5 py-3.5 placeholder-[white] outline-none focus:bg-[#797878];
+      }
 }
