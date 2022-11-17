@@ -30,7 +30,7 @@ const Header = () => {
         <Image src={doodle} alt="" />
       </div>
       <div className="flex items-center space-x-4 text-sm font-bold">
-        <ul className="hidden space-x-4 md:flex">
+        <ul className="hidden space-x-4 md:flex text-shadow-md">
           <li className="headerLink">Users</li>
           <li className="headerLink">Stadistics</li>
           <li className="headerLink">Reports</li>
