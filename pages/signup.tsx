@@ -9,6 +9,7 @@ import Vector from "../public/assets/Vector.png";
 import { MdOutlineMail } from "react-icons/md";
 
 interface Inputs {
+  username: string;
   email: string;
   password: string;
 }
@@ -58,8 +59,22 @@ const Login = () => {
           className="relative mt-24 space-y-8 rounded bg-black/60 py-10 px-6 md:mt-0 md:max-w-md md:px-14"
           onSubmit={handleSubmit(onSubmit)}
         >
-          <h1 className="text-4xl font-semibold">Sign In</h1>
+          <h1 className="text-4xl font-semibold">Sign Up</h1>
           <div className="space-y-4">
+            <label className="inline-block w-full">
+              <input
+                placeholder="Username"
+                className={`input ${
+                  errors.email && "border-b-2 border-orange-500"
+                }`}
+                {...register("username", { required: true })}
+              />
+              {errors.email && (
+                <p className="p-1 text-[13px] font-light  text-[#BFD732]">
+                  Please enter a username.
+                </p>
+              )}
+            </label>
             <label className="inline-block w-full">
               <input
                 type="email"
@@ -96,18 +111,8 @@ const Login = () => {
             onClick={() => setLogin(true)}
             type="submit"
           >
-            Sign In
+            Sign Up
           </button>
-          <div className="text-[gray]">
-            New to The Perfect Mentor?{" "}
-            <button
-              className="cursor-pointer text-white hover:underline"
-              onClick={() => setLogin(false)}
-              type="submit"
-            >
-              Sign up now
-            </button>
-          </div>
         </form>
       </div>
     </div>
