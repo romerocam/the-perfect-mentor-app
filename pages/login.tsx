@@ -7,6 +7,7 @@ import useAuth from "../hooks/useAuth";
 import doodle from "../public/assets/doodle.png";
 import Vector from "../public/assets/Vector.png";
 import { MdOutlineMail } from "react-icons/md";
+import { useRouter } from "next/router";
 
 interface Inputs {
   email: string;
@@ -16,13 +17,17 @@ interface Inputs {
 const Login = () => {
   const [login, setLogin] = useState(false);
   const { signIn, signUp } = useAuth();
-
+  const router = useRouter();
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<Inputs>();
 
+  const handleClick = (e: { preventDefault: () => void }) => {
+    e.preventDefault();
+    router.push("/signup");
+  };
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
     console.log(data);
     if (login) {
@@ -102,7 +107,7 @@ const Login = () => {
             New to The Perfect Mentor?{" "}
             <button
               className="cursor-pointer text-white hover:underline"
-              onClick={() => setLogin(false)}
+              onClick={handleClick}
               type="submit"
             >
               Sign up now

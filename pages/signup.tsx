@@ -6,7 +6,7 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import useAuth from "../hooks/useAuth";
 import doodle from "../public/assets/doodle.png";
 import Vector from "../public/assets/Vector.png";
-import { MdOutlineMail } from "react-icons/md";
+import { useRouter } from "next/router";
 
 interface Inputs {
   username: string;
@@ -14,15 +14,20 @@ interface Inputs {
   password: string;
 }
 
-const Login = () => {
+const Signup = () => {
   const [login, setLogin] = useState(false);
   const { signIn, signUp } = useAuth();
-
+  const router = useRouter();
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<Inputs>();
+
+  const handleClick = (e: { preventDefault: () => void }) => {
+    e.preventDefault();
+    router.push("/login");
+  };
 
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
     console.log(data);
@@ -40,19 +45,8 @@ const Login = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className="flex items-center space-x-2 md:space-x-10">
-        <Image
-          src={Vector}
-          alt=""
-          //   className="-z-10 !hidden opacity-60 sm:!inline"
-          //   objectFit="cover"
-        />
-        <Image
-          src={doodle}
-          alt=""
-          // layout="fill"
-          //   className="-z-10 !hidden opacity-60 sm:!inline"
-          //   objectFit="cover"
-        />
+        <Image src={Vector} alt="" />
+        <Image src={doodle} alt="" />
       </div>
       <div>
         <form
@@ -65,7 +59,7 @@ const Login = () => {
               <input
                 placeholder="Username"
                 className={`input ${
-                  errors.email && "border-b-2 border-orange-500"
+                  errors.username && "border-b-2 border-orange-500"
                 }`}
                 {...register("username", { required: true })}
               />
@@ -108,7 +102,7 @@ const Login = () => {
           </div>
           <button
             className="w-full rounded bg-[#797878] py-3 font-semibold"
-            onClick={() => setLogin(true)}
+            onClick={handleClick}
             type="submit"
           >
             Sign Up
@@ -119,4 +113,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Signup;
