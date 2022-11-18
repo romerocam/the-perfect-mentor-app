@@ -14,7 +14,7 @@ interface Inputs {
   password: string;
 }
 
-const Login = () => {
+const Signup = () => {
   const [login, setLogin] = useState(false);
   const { signIn, signUp } = useAuth();
   const router = useRouter();
@@ -113,4 +113,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Signup;
