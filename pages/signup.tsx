@@ -34,7 +34,7 @@ const Signup = () => {
     if (login) {
       await signIn(data.email, data.password);
     } else {
-      await signUp(data.email, data.password);
+      await signUp(data.email, data.password, data.username);
     }
   };
   return (
