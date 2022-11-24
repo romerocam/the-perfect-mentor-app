@@ -55,10 +55,9 @@ import {
   
           setInitialLoading(false)
         }),
-      [router]
+      [auth]
     )
   
-    // eslint-disable-next-line react-hooks/exhaustive-deps
     const signUp = async (email: string, password: string) => {
       setLoading(true)
   
@@ -72,7 +71,6 @@ import {
         .finally(() => setLoading(false))
     }
   
-    // eslint-disable-next-line react-hooks/exhaustive-deps
     const signIn = async (email: string, password: string) => {
       setLoading(true)
       await signInWithEmailAndPassword(auth, email, password)
@@ -98,7 +96,7 @@ import {
   
     const memoedValue = useMemo(
       () => ({ user, signUp, signIn, error, loading, logout }),
-      [user, signUp, signIn, error, loading]
+      [user, loading, error,]
     )
   
     return (
@@ -108,8 +106,7 @@ import {
     )
   }
   
-  // Let's only export the `useAuth` hook instead of the context.
-  // We only want to use the hook directly and never the context comopnent.
+  
   export default function useAuth() {
     return useContext(AuthContext)
   }
