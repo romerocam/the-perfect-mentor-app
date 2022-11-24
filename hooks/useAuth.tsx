@@ -55,9 +55,10 @@ import {
   
           setInitialLoading(false)
         }),
-      [auth]
+      [router]
     )
   
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     const signUp = async (email: string, password: string) => {
       setLoading(true)
   
@@ -71,6 +72,7 @@ import {
         .finally(() => setLoading(false))
     }
   
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     const signIn = async (email: string, password: string) => {
       setLoading(true)
       await signInWithEmailAndPassword(auth, email, password)
@@ -96,7 +98,7 @@ import {
   
     const memoedValue = useMemo(
       () => ({ user, signUp, signIn, error, loading, logout }),
-      [user, loading, error,]
+      [user, signUp, signIn, error, loading]
     )
   
     return (
