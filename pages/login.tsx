@@ -6,7 +6,7 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import useAuth from "../hooks/useAuth";
 import doodle from "../public/assets/doodle.png";
 import Vector from "../public/assets/Vector.png";
-import { MdOutlineMail } from "react-icons/md";
+
 import { useRouter } from "next/router";
 
 interface Inputs {
@@ -44,19 +44,8 @@ const Login = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className="flex items-center space-x-2 md:space-x-10">
-        <Image
-          src={Vector}
-          alt=""
-          //   className="-z-10 !hidden opacity-60 sm:!inline"
-          //   objectFit="cover"
-        />
-        <Image
-          src={doodle}
-          alt=""
-          // layout="fill"
-          //   className="-z-10 !hidden opacity-60 sm:!inline"
-          //   objectFit="cover"
-        />
+        <Image src={Vector} alt="" />
+        <Image src={doodle} alt="" />
       </div>
       <div>
         <form
