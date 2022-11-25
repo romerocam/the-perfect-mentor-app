@@ -80,7 +80,7 @@ const Login = () => {
               />
               {errors.password && (
                 <p className="p-1 text-[13px] font-light  text-[#BFD732]">
-                  Your password must contain between 5 and 10 characters.
+                  Your password must contain between 6 and 10 characters.
                 </p>
               )}
             </label>
