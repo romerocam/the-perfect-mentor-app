@@ -10,21 +10,21 @@ const Header = () => {
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 0) {
-        setIsScrolled(true)
+        setIsScrolled(true);
       } else {
-        setIsScrolled(false)
+        setIsScrolled(false);
       }
-    }
+    };
 
-    window.addEventListener('scroll', handleScroll)
+    window.addEventListener("scroll", handleScroll);
 
     return () => {
-      window.removeEventListener('scroll', handleScroll)
-    }
-  }, [])
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   return (
-    <header className={`${isScrolled && 'bg-[#BFD732]'}`}>
+    <header className={`${isScrolled && "bg-[#BFD732]"}`}>
       <div className="flex items-center space-x-2 md:space-x-10">
         <Image src={Vector} alt="" />
         <Image src={doodle} alt="" />
